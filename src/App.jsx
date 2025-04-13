@@ -1,24 +1,17 @@
-
-import { Routes, Route, useNavigate } from 'react-router';
-
+import { Routes, Route } from "react-router";
 
 //** import components **//
-import SignUpForm from "./components/SignupForm.jsx";
+import NavBar from "./components/NavBar/NavBar";
+import SignUpForm from "./components/SignupForm/SignupForm";
 //** import components **//
-
-
-
-
 
 function App() {
-
-
   return (
     <>
-      {/* nav bar here- do we need a nav bar? modals instead? */}
+      <NavBar />
       <Routes>
-        <Route path='/' element= {<h1>hello world</h1>} />
-        <Route path='/sign-up' element={<SignUpForm />} />
+        <Route path="/" element={<h1>hello world</h1>} />
+        <Route path="/sign-up" element={<SignUpForm />} />
       </Routes>
     </>
   );
