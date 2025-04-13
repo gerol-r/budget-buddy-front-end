@@ -35,7 +35,7 @@ const SignUpForm = () => {
   };
 
   const isFormInvalid = () => {
-    return !(username && password && password === passwordConf);
+    return !(username && password && (password === passwordConf));
   };
 
   return (

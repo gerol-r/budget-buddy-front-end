@@ -4,7 +4,7 @@ import { UserContext } from "../../contexts/UserContext";
 
 const NavBar = () => {
   const { user } = useContext(UserContext);
-
+  console.log(user)
   const handleSignOut = () => {
     localStorage.removeItem("token");
     setUser(null);
@@ -14,7 +14,18 @@ const NavBar = () => {
     <nav>
       {user ? (
         <ul style={{ listStyleType: "none" }}>
-          <li>Welcome to Budget Budy, {user.username}!</li>
+          <li>
+            Hey there, {user.username}
+            <img
+              src={user?.avatar}
+              alt="User Avatar"
+              style={{ width: "50px", borderRadius: "50%" }}
+            />
+            !
+          </li>
+          <li>
+            <h3>Welcome to Budget Buddy!</h3>
+          </li>
           <li>
             <Link to="/" onClick={handleSignOut}>
               Sign Out
@@ -26,10 +37,12 @@ const NavBar = () => {
           <li>
             <Link to="/sign-up">Sign Up</Link>
           </li>
+          <li>
+            <Link to="/sign-in">Sign In</Link>
+          </li>
         </ul>
       )}
     </nav>
   );
 };
-
 export default NavBar;
