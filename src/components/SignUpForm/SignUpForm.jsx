@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
-import { signUp } from "../services/authService.js";
-import { UserContext } from "../contexts/UserContext.jsx";
+import { signUp } from "../../services/authService.js";
+import { UserContext } from "../../contexts/UserContext.jsx";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -87,7 +87,6 @@ const SignUpForm = () => {
             />
           </div>
           <div>
-            {/* add savings goal to user model? */}
             <label htmlFor="savingsGoal">Savings Goal:</label>
             <input
               type="number"
