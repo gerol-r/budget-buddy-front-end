@@ -22,7 +22,7 @@ const NavBar = () => {
           </li>
         </ul>
       ) : (
-        <ul>
+        <ul style={{ listStyleType: "none" }}>
           <li>
             <Link to="/sign-up">Sign Up</Link>
           </li>
