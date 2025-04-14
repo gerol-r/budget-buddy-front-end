@@ -40,9 +40,24 @@ const create = async (budgetFormData) => {
       }
     };
 
+//delete budget 
+const deleteBudget = async (budgetId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${budgetId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 export { 
     index,
     show,
-    create
+    create,
+    deleteBudget
   };
