@@ -8,6 +8,24 @@ const index = async () => {
     return await res.json();
  } catch (err) {
         console.log(err);
-        throw new Error(err);
-      }
     };
+};
+
+//showing budget by id 
+const show = async (budgetId) => {
+    try {
+        const res = await fetch (`${BASE_URL}/${budgetId}`, {
+            headers: getHeaders(),
+          });
+    return await res.json();
+} catch (err) {
+       console.log(err);
+   };
+};
+
+
+
+export { 
+    index,
+    show,
+  };
