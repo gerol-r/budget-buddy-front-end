@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState, useState } from "react";
+import { useContext, useEffect, useState, } from "react";
 
 import { UserContext } from "../../contexts/UserContext";
 
-import * as userService from '../../services/userService';
+import * as budgetService from '../../services/budgetService';
 
 const Dashboard = () => {
     const { user } = useContext(UserContext);
@@ -11,7 +11,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchBudgets = async () => {
             try {
-                const fetchedBudgets = await userService.index();
+                const fetchedBudgets = await budgetService.index();
                 setBudgets(fetchedBudgets);
             } catch (err) {
                 console.log(err)
