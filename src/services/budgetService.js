@@ -24,13 +24,15 @@ const show = async (budgetId) => {
 };
 
 //post new budget
-const create = async (budgetId, FormData) => {
+const create = async (budgetFormData) => {
     try {
         const res = await fetch(BASE_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify(budgetId, FormData),
+          body: JSON.stringify(budgetFormData),
         });
         return res.json();
       } catch (error) {
