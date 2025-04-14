@@ -26,6 +26,7 @@ const NavBar = () => {
           <li>
             <h3>Welcome to Budget Buddy!</h3>
           </li>
+          <li><Link to='/'>Dashboard</Link></li>
           <li>
             <Link to="/" onClick={handleSignOut}>
               Sign Out
@@ -34,6 +35,7 @@ const NavBar = () => {
         </ul>
       ) : (
         <ul style={{ listStyleType: "none" }}>
+          <li><Link to='/'>Home</Link></li>
           <li>
             <Link to="/sign-up">Sign Up</Link>
           </li>
