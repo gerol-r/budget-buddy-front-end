@@ -54,10 +54,30 @@ const deleteBudget = async (budgetId) => {
       console.log(error);
     }
   };
+//update 
+const update = async (budgetId, FormData) => {
+    try {
+        const res = await fetch(BASE_URL, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(budgetId, FormData),
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+
+
 
 export { 
     index,
     show,
     create,
-    deleteBudget
+    deleteBudget,
+    update
   };
