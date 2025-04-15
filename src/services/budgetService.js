@@ -76,13 +76,13 @@ const update = async (budgetId, FormData) => {
 //post exp
 const createExpense = async (budgetId, expenseFormData) => {
     try {
-        const res = await fetch(`${BASE_URL}/${hootId}/comments`, {
+        const res = await fetch(`${BASE_URL}/${budgetId}/expense`, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(expemseFormData),
+            body: JSON.stringify(expenseFormData),
         });
         return res.json();
     } catch (error) {
