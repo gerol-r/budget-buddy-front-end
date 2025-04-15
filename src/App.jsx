@@ -2,7 +2,7 @@ import { Routes, Route, useNavigate } from "react-router";
 
 //** import components **//
 import NavBar from "./components/NavBar/NavBar";
-import SignUpForm from "./components/SignupForm/SignupForm";
+import SignUpForm from "./components/SignUpForm/SignupForm";
 import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
 import BudgetForm from "./components/BudgetForm/BudgetForm";

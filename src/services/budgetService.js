@@ -3,7 +3,7 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/budgets`;
 const index = async () => {
     try {
     const res = await fetch(BASE_URL, {
-      headers: getHeaders(),
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
     return await res.json();
  } catch (err) {
@@ -15,8 +15,8 @@ const index = async () => {
 const show = async (budgetId) => {
     try {
         const res = await fetch (`${BASE_URL}/${budgetId}`, {
-            headers: getHeaders(),
-          });
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        });
     return await res.json();
 } catch (err) {
        console.log(err);
@@ -54,10 +54,30 @@ const deleteBudget = async (budgetId) => {
       console.log(error);
     }
   };
+//update 
+const update = async (budgetId, FormData) => {
+    try {
+        const res = await fetch(BASE_URL, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(budgetId, FormData),
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+
+
 
 export { 
     index,
     show,
     create,
-    deleteBudget
+    deleteBudget,
+    update
   };
