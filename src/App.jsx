@@ -7,6 +7,7 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
 import BudgetForm from "./components/BudgetForm/BudgetForm";
 import Dashboard from "./components/Dashboard/Dashboard";
+import * as budgetService from "./services/budgetService";
 //** import components **//
 
 import { UserContext } from './contexts/UserContext';
@@ -20,7 +21,7 @@ function App() {
 // Handler functions
 
 const handleAddBudget = async (budgetFormData) => {
-  const newBudget = await budgetServive.create(budgetFormData);
+  const newBudget = await budgetService.create(budgetFormData);
   setBudgets([newBudget, ...budgets]);
   navigate('/budgets')
 }
