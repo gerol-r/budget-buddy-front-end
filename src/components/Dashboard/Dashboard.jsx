@@ -1,11 +1,8 @@
-import { useContext, useEffect, useState, } from "react";
-
-import { UserContext } from "../../contexts/UserContext";
+import { useEffect, useState, } from "react";
 
 import * as budgetService from '../../services/budgetService';
 
 const Dashboard = () => {
-    // const { user } = useContext(UserContext); not needed for the dashboard?
     const [ budgets, setBudgets ] = useState([]);
 
     useEffect(() => {
