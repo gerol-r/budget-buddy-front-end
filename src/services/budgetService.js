@@ -76,7 +76,7 @@ const update = async (budgetId, FormData) => {
 //post exp
 const createExpense = async (budgetId, expenseFormData) => {
     try {
-        const res = await fetch(`${BASE_URL}/${budgetId}/expense`, {
+        const res = await fetch(`${BASE_URL}/${budgetId}/expenses`, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -91,11 +91,29 @@ const createExpense = async (budgetId, expenseFormData) => {
 };
 
 
+//upd exp
+const updateExpense = async (budgetId, expenseId, expenseFormData) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${budgetId}/expenses/${expenseId}`, {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(expenseFormData),
+        });
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export {
     index,
     show,
     create,
     deleteBudget,
     update,
-    createExpense
+    createExpense,
+    updateExpense
 };
