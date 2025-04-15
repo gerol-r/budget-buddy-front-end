@@ -32,6 +32,12 @@ const handleDeleteBudget = async (budgetId) => {
   navigate('/budgets');
 };
 
+const handleUpdateBudget = async (budgetId, budgetFormData) => {
+  console.log('budgetId:', budgetId, 'budgetFormData:', budgetFormData);
+  setBudgets(budgets.map((budget) => (budgetId === budget._id ? updatedBudget : budget)));
+  navigate(`/budgets/${budgetId}`);
+};
+
   return (
     <>
       <NavBar />
