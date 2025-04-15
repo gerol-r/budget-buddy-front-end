@@ -108,6 +108,23 @@ const updateExpense = async (budgetId, expenseId, expenseFormData) => {
     }
 };
 
+
+//del expense 
+const deleteExpense = async (budgetId, expenseId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${budgetId}/expenses/${expenseId}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+        });
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export {
     index,
     show,
@@ -115,5 +132,6 @@ export {
     deleteBudget,
     update,
     createExpense,
-    updateExpense
+    updateExpense,
+    deleteExpense
 };
