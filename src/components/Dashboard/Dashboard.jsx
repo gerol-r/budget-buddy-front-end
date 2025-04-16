@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as budgetService from "../../services/budgetService";
 import BudgetForm from "../BudgetForm/BudgetForm";
-import * as budgetService from '../../services/budgetService';
+
 
 const Dashboard = () => {
     const [ budgets, setBudgets ] = useState([]);
