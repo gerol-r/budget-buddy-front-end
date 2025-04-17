@@ -7,7 +7,19 @@ const getUserFromToken = () => {
 
   if (!token) return null;
   
-  return JSON.parse(atob(token.split(".")[1])).payload;
+  try {
+    // Split token and verify it has 3 parts
+    const parts = token.split('.');
+    if (parts.length !== 3) return null;
+
+      // Decode the payload (middle part)
+      const payload = JSON.parse(atob(parts[1]));
+      return payload;
+    } catch (err) {
+      console.error("Invalid token:", err);
+      localStorage.removeItem("token"); // Clear invalid token
+      return null;
+    }  
 };
 
 function UserProvider({ children }) {
