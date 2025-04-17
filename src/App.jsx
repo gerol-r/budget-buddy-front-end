@@ -11,12 +11,22 @@ import * as budgetService from "./services/budgetService";
 //** import components **//
 
 import { UserContext } from './contexts/UserContext';
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 function App() {
   const [budgets, setBudgets] = useState();
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
+
+// useEffect 
+
+useEffect(() => {
+  const fetchAllBudgets = async () => {
+    const budgetsData = await budgetService.index();
+    setBudgets(budgetsData);
+  };
+  if (user) fetchAllBudgets();
+}, []);
 
 // Handler functions
 
@@ -28,7 +38,7 @@ const handleAddBudget = async (budgetFormData) => {
 
 const handleDeleteBudget = async (budgetId) => {
   const deletedBudget = await budgetService.deleteBudget(budgetId);
-  setBudgets(budget.filter((budget) => budget._id !== deletedBudget._id));
+  setBudgets(budgets.filter((budget) => budget._id !== deletedBudget._id));
   navigate('/budgets');
 };
 
@@ -42,7 +52,7 @@ const handleUpdateBudget = async (budgetId, budgetFormData) => {
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={user ? <Dashboard handleAddBudget={handleAddBudget} handleUpdateBudget={handleUpdateBudget} /> : <Landing /> } />
+        <Route path='/budgets' element={user ? <Dashboard handleAddBudget={handleAddBudget} handleUpdateBudget={handleUpdateBudget} /> : <Landing /> } />
         <Route path='/budgets/new' element={<BudgetForm handleAddBudget={handleAddBudget} />} />
         <Route path="/budgets/:budgetId/edit" element={<BudgetForm handleUpdateBudget={handleUpdateBudget} />} />
         <Route path="/sign-up" element={<SignUpForm />} />
