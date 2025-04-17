@@ -2,14 +2,25 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/budgets`;
 
 const index = async () => {
     try {
-        const res = await fetch(BASE_URL, {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        });
-        return await res.json();
+      const res = await fetch(BASE_URL, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+  
+      // If the server returns 304, don't try to parse JSON
+      if (res.status === 304) {
+        console.log("No new data (304 Not Modified)");
+        return []; // or return previously cached data if you have it
+      }
+  
+      if (!res.ok) {
+        throw new Error(`Server error: ${res.status}`);
+      }
+  
+      return await res.json();
     } catch (err) {
-        console.log(err);
-    };
-};
+      console.error("Failed to fetch budgets:", err);
+    }
+  };
 
 //showing budget by id 
 const show = async (budgetId) => {
@@ -17,7 +28,7 @@ const show = async (budgetId) => {
         const res = await fetch(`${BASE_URL}/${budgetId}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
-        return await res.json();
+        return res.json();
     } catch (err) {
         console.log(err);
     };

@@ -10,26 +10,17 @@ const Dashboard = (props) => {
     useEffect(() => {
         const fetchBudgets = async () => {
             try {
-                const fetchedBudgets = await budgetService.index();
-                setBudgets(fetchedBudgets);
+                console.log("Token in localStorage:", localStorage.getItem('token'));
+              const fetchedBudgets = await budgetService.index();
+              setBudgets(fetchedBudgets); // assuming you're storing the result
             } catch (err) {
-                console.log(err)
+              console.error("Failed to fetch budgets:", err);
             }
-        }
+          };
         if (budgets) fetchBudgets();
-    }, [budgets]);
+    }, []);
 
-	useEffect(() => {
-		const fetchBudgets = async () => {
-			try {
-				const fetchedBudgets = await budgetService.index();
-				setBudgets(fetchedBudgets);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		if (budgets) fetchBudgets();
-	}, [budgets]);
+
 
 	return (
 		<div>
