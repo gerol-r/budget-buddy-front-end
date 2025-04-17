@@ -6,6 +6,7 @@ import * as budgetService from '../../services/budgetService';
 
 
 const BudgetForm = (props) => {
+    console.log(props)
 
     // set the default state of the form
     const [formData, setFormData] = useState({

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import * as budgetService from "../../services/budgetService";
 import BudgetForm from "../BudgetForm/BudgetForm";
+import BudgetCard from "../Card/BudgetCard";
 
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     const [ budgets, setBudgets ] = useState([]);
 
     useEffect(() => {
@@ -33,15 +34,11 @@ const Dashboard = () => {
 	return (
 		<div>
 			<main>
-				<BudgetForm />
+				<BudgetForm handleAddBudget={props.handleAddBudget} handleUpdateBudget={props.handleUpdateBudget} />
 			</main>
 			<section>
 				{budgets ? (
-					<ul>
-						{budgets.map((budget) => (
-							<li key={budget._id}>{budget.name}</li>
-						))}
-					</ul>
+					<BudgetCard />
 				) : (
 					<p>This is the dashboard where you can see all of your budgets!</p>
 				)}
