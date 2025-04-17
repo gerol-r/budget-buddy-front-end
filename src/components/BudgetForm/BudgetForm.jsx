@@ -11,7 +11,7 @@ const BudgetForm = (props) => {
     // set the default state of the form
     const [formData, setFormData] = useState({
         name: '',
-        amount: 0,
+        amount: '',
     });
 
     const { budgetId } = useParams();
@@ -22,6 +22,7 @@ const BudgetForm = (props) => {
             const budgetData = await budgetService.show(budgetId);
             setFormData(budgetData);
         };
+
         if (budgetId) fetchBudget();
     }, [budgetId]);
 
@@ -37,6 +38,10 @@ const BudgetForm = (props) => {
             props.handleUpdateBudget(budgetId, formData);
         } else {
             props.handleAddBudget(formData);
+            setFormData({
+                name: '',
+                amount: '',
+            });
         }
     };
 
