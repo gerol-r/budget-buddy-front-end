@@ -42,12 +42,12 @@ const handleUpdateBudget = async (budgetId, budgetFormData) => {
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={user ? <Dashboard /> : <Landing /> } />
+        <Route path='/' element={user ? <Dashboard handleAddBudget={handleAddBudget} handleUpdateBudget={handleUpdateBudget} /> : <Landing /> } />
         <Route path='/budgets/new' element={<BudgetForm handleAddBudget={handleAddBudget} />} />
+        <Route path="/budgets/:budgetId/edit" element={<BudgetForm handleUpdateBudget={handleUpdateBudget} />} />
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />
         {/* <Route path='/budgets/:budgetId'element={<BudgetDetails handleDeleteBudget={handleDeleteBudget}/>} /> */}
-        {/* <Route path="/budgets/:budgetId/edit" element={<BudgetForm handleUpdateBudget={handleUpdateBudget} />} /> */}
       </Routes>
     </>
   );
