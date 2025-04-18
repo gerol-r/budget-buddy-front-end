@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import * as budgetService from "../../services/budgetService";
 import BudgetForm from "../BudgetForm/BudgetForm";
 import BudgetCard from "../Card/BudgetCard";
@@ -7,6 +8,7 @@ import BudgetCard from "../Card/BudgetCard";
 const Dashboard = (props) => {
     const [ budgets, setBudgets ] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const { user } = useContext(UserContext);
 
 	// set a loading state, wait for fetch, then set  budgets and close loading state
 	//without it, infinite unassigned budget cards mapped- no budget data
@@ -18,7 +20,10 @@ const Dashboard = (props) => {
             try {
                 console.log("Token in localStorage:", localStorage.getItem('token'));
               const fetchedBudgets = await budgetService.index();
-              setBudgets(fetchedBudgets); // assuming you're storing the result
+			  const userBudgets = fetchedBudgets.filter(
+				budget => budget.user === user._id
+			);
+			setBudgets(userBudgets || []); // assuming you're storing the result
             } catch (err) {
               console.error("Failed to fetch budgets:", err);
 			  setBudgets([]);
@@ -26,8 +31,11 @@ const Dashboard = (props) => {
                 setIsLoading(false);
 			}
           };
-		fetchBudgets();
-    }, []);
+		  //fetch if user is logged in
+		  if (user?._id) {
+			fetchBudgets();
+		  }
+    }, [user]);
 
 
 
