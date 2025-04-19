@@ -72,22 +72,22 @@ import * as userService from "../../services/userService"
 // export default Dashboard;
 
 
-const Dashboard = ({ handleAddBudget, handleUpdateBudget }) => {
+const Dashboard = () => {
 
     const { user } = useContext(UserContext);
-    const [users, setUsers ] = useState([]);
+    // const [users, setUsers ] = useState([]);
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const fetchedUsers = await userService.index()
-                setUsers(fetchedUsers);
-            } catch (err) {
-                console.log(err)
-            }
-        };
-        if (user) fetchUsers();
-    }, [user])
+    // useEffect(() => {
+    //     const fetchUsers = async () => {
+    //         try {
+    //             const fetchedUsers = await userService.index()
+    //             setUsers(fetchedUsers);
+    //         } catch (err) {
+    //             console.log(err)
+    //         }
+    //     };
+    //     if (user) fetchUsers();
+    // }, [user])
 
     return (
 
