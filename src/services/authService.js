@@ -17,8 +17,11 @@ const signUp = async (formData) => {
 
     if (data.token) {
       localStorage.setItem('token', data.token);
-      const payload = JSON.parse(atob(data.token.split('.')[1])).payload;
-      return payload;
+      // const payload = JSON.parse(atob(data.token.split('.')[1])).payload;
+      // return payload;
+      const userData = JSON.parse(atob(data.token.split('.')[1])).payload;
+      localStorage.setItem('user', JSON.stringify(userData)); //ensureing jwt auth AND user data
+      return userData;
     }
 
     throw new Error('Invalid response from server');
@@ -44,7 +47,10 @@ const signIn = async (formData) => {
 
     if (data.token) {
       localStorage.setItem('token', data.token);
-      return JSON.parse(atob(data.token.split('.')[1])).payload
+      // return JSON.parse(atob(data.token.split('.')[1])).payload
+      const userData = JSON.parse(atob(data.token.split('.')[1])).payload;
+      localStorage.setItem('user', JSON.stringify(userData));
+      return userData;
     }
 
     throw new Error('Invalid response from server');

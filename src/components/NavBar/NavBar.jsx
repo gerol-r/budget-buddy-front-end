@@ -7,6 +7,7 @@ const NavBar = () => {
   // console.log(user)
   const handleSignOut = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setUser(null);
   };
 
