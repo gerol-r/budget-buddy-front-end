@@ -72,27 +72,32 @@ import * as userService from "../../services/userService"
 // export default Dashboard;
 
 
-const Dashboard = ({ handleAddBudget, handleUpdateBudget }) => {
+// const Dashboard = ({ handleAddBudget, handleUpdateBudget }) => {
+const Dashboard = () => {
 
     const { user } = useContext(UserContext);
-    const [users, setUsers ] = useState([]);
+    // const [users, setUsers ] = useState([]);
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const fetchedUsers = await userService.index()
-                setUsers(fetchedUsers);
-            } catch (err) {
-                console.log(err)
-            }
-        };
-        if (user) fetchUsers();
-    }, [user])
+    // useEffect(() => {
+    //     const fetchUsers = async () => {
+    //         try {
+    //             const fetchedUsers = await userService.index()
+    //             setUsers(fetchedUsers);
+    //         } catch (err) {
+    //             console.log(err)
+    //         }
+    //     };
+    //     if (user) fetchUsers();
+    // }, [user])
 
     return (
 
         <main>
-            <h1>Welcome to the super awesome Home Page {user.username}!</h1>
+            <h1>Welcome to the super awesome Home Page {user.username} <img
+              src={user?.avatar}
+              alt="User Avatar"
+              style={{ width: "50px", borderRadius: "50%" }}
+            />!</h1>
         </main>
     )
 }
