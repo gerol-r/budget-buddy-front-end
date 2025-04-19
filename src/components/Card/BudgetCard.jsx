@@ -4,7 +4,7 @@ import * as budgetService from '../../services/budgetService';
 import { Link } from 'react-router';
 
 
-const BudgetCard = ({budget}) => {
+const BudgetCard = ({ budget }) => {
     // const [budget, setBudget] = useState([]);
 
     // useEffect(() => {
