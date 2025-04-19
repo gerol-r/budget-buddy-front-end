@@ -30,31 +30,22 @@ function App() {
     if (user) fetchAllBudgets();
   }, [user]);
 
-  // Handler functions
 
-  // const handleAddBudget = async (budgetFormData) => {
-  //   try {
-  //     const newBudget = await budgetService.create(budgetFormData);
-
-  //     // Update state immediately before navigation
-  //     setBudgets((prev) => {
-  //       const updated = [newBudget, ...prev];
-
-  //       return updated;
-  //     });
-
-  //     navigate("/");
-  //     return newBudget;
-  //   } catch (err) {
-  //     throw err;
-  //   }
-  // };
 
   const handleAddBudget = async (budgetFormData) => {
+    // Step 1: Add the new budget
     const newBudget = await budgetService.create(budgetFormData);
-    setBudgets([newBudget, ...budgets]);
+  
+    // Step 2: Refetch the updated list of budgets (if needed)
+    const updatedBudgets = await budgetService.index();
+  
+    // Step 3: Update state with the new list
+    // had to add in the use of index to force the re-render of the budgets on form submit. Before form was submitting data but not reflecting that on the budgetList
+    setBudgets(updatedBudgets);
+  
+    // Step 4: Navigate to the budgets list page
     navigate('/budgets');
-  }
+  };
 
   const handleDeleteBudget = async (budgetId) => {
     const deletedBudget = await budgetService.deleteBudget(budgetId);
@@ -62,24 +53,6 @@ function App() {
     navigate("/budgets");
   };
 
-  // const handleUpdateBudget = async (budgetId, budgetFormData) => {
-  //   console.log("budgetId:", budgetId, "budgetFormData:", budgetFormData);
-  //   try {
-  //     const updatedBudget = await budgetService.update(
-  //       budgetId,
-  //       budgetFormData
-  //     );
-  //     setBudgets((prevBudgets) =>
-  //       prevBudgets.map((budget) =>
-  //         budget._id === budgetId ? updatedBudget : budget
-  //       )
-  //     );
-  //     // setBudgets(budgets.map((budget) => (budgetId === budget._id ? updatedBudget : budget)));
-  //     navigate(`/budgets/${budgetId}`);
-  //   } catch (err) {
-  //     console.error("Failed to update budget:", err);
-  //   }
-  // };
 
   const handleUpdateBudget = async (budgetId, budgetFormData) => {
     const updatedBudget = await budgetService.update(budgetId, budgetFormData);
