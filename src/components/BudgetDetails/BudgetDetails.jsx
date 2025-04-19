@@ -26,7 +26,8 @@ const BudgetDetails = (props) => {
     // handler function
 
     const handleAddExpense = async (expenseFormData) => {
-      const newExpense = await budgetService.createExpense(budgetId, expenseFormData);
+      const res = await budgetService.createExpense(budgetId, expenseFormData);
+      const newExpense = res.expense;
       setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });
     };
 
@@ -50,9 +51,9 @@ const BudgetDetails = (props) => {
           {!budget.expenses.length && <p>There are no expenses.</p>}
 
           {budget.expenses.map((expense) => (
-            <table>
+            <table key={expense._id}>
               <tbody>
-              <tr key={expense._id}>
+              <tr>
               <td>Exp Name: {expense.name}</td>
               <td>Exp Amount: {expense.amount}</td>
               </tr>

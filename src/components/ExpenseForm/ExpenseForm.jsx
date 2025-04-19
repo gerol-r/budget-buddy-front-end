@@ -11,7 +11,7 @@ const ExpenseForm = (props) => {
   };
 
   const handleSubmit = (evt) => {
-    // evt.preventDefault();
+    evt.preventDefault();
     props.handleAddExpense(formData);
     setFormData({ name: '', amount: ''});
   };
