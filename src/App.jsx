@@ -8,89 +8,103 @@ import Landing from "./components/Landing/Landing";
 import BudgetForm from "./components/BudgetForm/BudgetForm";
 import Dashboard from "./components/Dashboard/Dashboard";
 import * as budgetService from "./services/budgetService";
+import BudgetList from "./components/BudgetList/BudgetList";
+import BudgetDetails from "./components/BudgetDetails/BudgetDetails";
 //** import components **//
 
 import { UserContext } from "./contexts/UserContext";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 function App() {
   const [budgets, setBudgets] = useState([]); //new- initialized empty array
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
+  // useEffect 
+
+  useEffect(() => {
+    const fetchAllBudgets = async () => {
+      const budgetsData = await budgetService.index();
+      setBudgets(budgetsData);
+    };
+    if (user) fetchAllBudgets();
+  }, [user]);
+
   // Handler functions
 
+  // const handleAddBudget = async (budgetFormData) => {
+  //   try {
+  //     const newBudget = await budgetService.create(budgetFormData);
+
+  //     // Update state immediately before navigation
+  //     setBudgets((prev) => {
+  //       const updated = [newBudget, ...prev];
+
+  //       return updated;
+  //     });
+
+  //     navigate("/");
+  //     return newBudget;
+  //   } catch (err) {
+  //     throw err;
+  //   }
+  // };
+
   const handleAddBudget = async (budgetFormData) => {
-    try {
-      const newBudget = await budgetService.create(budgetFormData);
-
-      // Update state immediately before navigation
-      setBudgets((prev) => {
-        const updated = [newBudget, ...prev];
-
-        return updated;
-      });
-
-      navigate("/");
-      return newBudget;
-    } catch (err) {
-      throw err;
-    }
-  };
+    const newBudget = await budgetService.create(budgetFormData);
+    setBudgets([newBudget, ...budgets]);
+    navigate('/budgets');
+  }
 
   const handleDeleteBudget = async (budgetId) => {
     const deletedBudget = await budgetService.deleteBudget(budgetId);
-    setBudgets(budget.filter((budget) => budget._id !== deletedBudget._id));
+    setBudgets(budgets.filter((budget) => budget._id !== deletedBudget._id));
     navigate("/budgets");
   };
 
+  // const handleUpdateBudget = async (budgetId, budgetFormData) => {
+  //   console.log("budgetId:", budgetId, "budgetFormData:", budgetFormData);
+  //   try {
+  //     const updatedBudget = await budgetService.update(
+  //       budgetId,
+  //       budgetFormData
+  //     );
+  //     setBudgets((prevBudgets) =>
+  //       prevBudgets.map((budget) =>
+  //         budget._id === budgetId ? updatedBudget : budget
+  //       )
+  //     );
+  //     // setBudgets(budgets.map((budget) => (budgetId === budget._id ? updatedBudget : budget)));
+  //     navigate(`/budgets/${budgetId}`);
+  //   } catch (err) {
+  //     console.error("Failed to update budget:", err);
+  //   }
+  // };
+
   const handleUpdateBudget = async (budgetId, budgetFormData) => {
-    console.log("budgetId:", budgetId, "budgetFormData:", budgetFormData);
-    try {
-      const updatedBudget = await budgetService.update(
-        budgetId,
-        budgetFormData
-      );
-      setBudgets((prevBudgets) =>
-        prevBudgets.map((budget) =>
-          budget._id === budgetId ? updatedBudget : budget
-        )
-      );
-      // setBudgets(budgets.map((budget) => (budgetId === budget._id ? updatedBudget : budget)));
-      navigate(`/budgets/${budgetId}`);
-    } catch (err) {
-      console.error("Failed to update budget:", err);
-    }
-  };
+    const updatedBudget = await budgetService.update(budgetId, budgetFormData);
+    setBudgets(budgets.map((budget) => (budgetId === budget._id ? updatedBudget : budget)));
+    navigate(`/budgets/${budgetId}`);
+  }
 
   return (
     <>
       <NavBar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            user ? (
-              <Dashboard
-                handleAddBudget={handleAddBudget}
-                handleUpdateBudget={handleUpdateBudget}
-              />
-            ) : (
-              <Landing />
-            )
-          }
-        />
-        <Route
-          path="/budgets/new"
-          element={<BudgetForm handleAddBudget={handleAddBudget} />}
-        />
-        <Route
-          path="/budgets/:budgetId/edit"
-          element={<BudgetForm handleUpdateBudget={handleUpdateBudget} />}
-        />
-        <Route path="/sign-up" element={<SignUpForm />} />
-        <Route path="/sign-in" element={<SignInForm />} />
-        {/* <Route path='/budgets/:budgetId'element={<BudgetDetails handleDeleteBudget={handleDeleteBudget}/>} /> */}
+        <Route path='/' element={user ? <Dashboard /> : <Landing />} />
+        {user ? (
+          <>
+          <Route path='/budgets' element={<BudgetList budgets={budgets} />} />
+          <Route path='budgets/new' element={<BudgetForm handleAddBudget={handleAddBudget} />} />
+          <Route path='/budgets/:budgetId' element={<BudgetDetails handleDeleteBudget={handleDeleteBudget} />} />
+          <Route path='budgets/:budgetId/edit' element={<BudgetForm handleUpdateBudget={handleUpdateBudget} />} />
+          </>
+        ) : (
+          <>
+          <Route path='/sign-up' element={<SignUpForm />} />
+          <Route path='/sign-in' element={<SignInForm />} />
+          </>
+        )}
       </Routes>
     </>
   );

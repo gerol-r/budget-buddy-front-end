@@ -3,7 +3,7 @@ import { useState } from 'react';
 const ExpenseForm = (props) => {
     const [formData, setFormData] = useState({
         name: '',
-        amount: ''
+        amount: '',
       });
 
   const handleChange = (evt) => {
@@ -11,7 +11,7 @@ const ExpenseForm = (props) => {
   };
 
   const handleSubmit = (evt) => {
-    evt.preventDefault();
+    // evt.preventDefault();
     props.handleAddExpense(formData);
     setFormData({ name: '', amount: ''});
   };
@@ -27,7 +27,7 @@ const ExpenseForm = (props) => {
         value={formData.name}
         onChange={handleChange}
       />
-      <label htmlFor='amount'>Expense Name:</label>
+      <label htmlFor='amount'>Expense Amount:</label>
       <input
         required
         type='number'

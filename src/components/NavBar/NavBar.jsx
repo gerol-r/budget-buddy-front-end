@@ -4,9 +4,10 @@ import { UserContext } from "../../contexts/UserContext";
 
 const NavBar = () => {
   const { user } = useContext(UserContext);
-  console.log(user)
+  // console.log(user)
   const handleSignOut = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setUser(null);
   };
 
@@ -27,6 +28,8 @@ const NavBar = () => {
             <h3>Welcome to Budget Buddy!</h3>
           </li>
           <li><Link to='/'>Dashboard</Link></li>
+          <li><Link to='/budgets'>View Budgets</Link></li>
+          <li><Link to='/budgets/new'>Create Budget</Link></li>
           <li>
             <Link to="/" onClick={handleSignOut}>
               Sign Out
