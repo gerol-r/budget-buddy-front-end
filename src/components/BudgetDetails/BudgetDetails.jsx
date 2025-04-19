@@ -38,8 +38,10 @@ const BudgetDetails = (props) => {
           <h1>Budget:</h1>
           <h2>Budget name:  {budget.name}</h2>
           <p>Budget total:  ${budget.amount}</p>
+
           <Link to={`/budgets/${budgetId}/edit`}>Edit Budget</Link>
           <button onClick={() => props.handleDeleteBudget(budgetId)}>Delete Budget</button>
+
         </section>
         <section>
           <h1>Expenses:</h1>
