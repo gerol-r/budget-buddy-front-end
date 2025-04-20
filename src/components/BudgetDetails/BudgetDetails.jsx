@@ -5,13 +5,15 @@ import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import { UserContext } from "../../contexts/UserContext";
 import BudgetDonutChart from "../BudgetDonutChart/BudgetDonutChart";
 import { _alignPixel } from "chart.js/helpers";
-import { FaEdit, FaTrash } from "react-icons/fa"
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { useNavigate } from "react-router"
 
 const BudgetDetails = (props) => {
   console.log(props);
   const { budgetId } = useParams();
   // console.log('budgetId', budgetId);
   const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [budget, setBudget] = useState(null);
 
@@ -32,6 +34,21 @@ const BudgetDetails = (props) => {
       expenseFormData
     );
     setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });
+  };
+
+  const handleUpdateExpense = async (expenseId, expenseFormData) => {
+    const updatedExpense = await budgetService.updateExpense(expenseId, expenseFormData)
+    setBudget(budget.map((expense) => (expenseId === expense._id ? updatedExpense : expense)))
+    navigate(`/budgets/${budgetId}`);
+  }
+
+  const handleDeleteExpense = async (expenseId) => {
+    const deletedExpense = await budgetService.deleteExpense(budgetId, expenseId);
+    setBudget({
+      ...budget,
+      expenses: budget.expenses.filter((expense) => expense._id !== deletedExpense.expenseId),
+    });
+    navigate(`/budgets/${budgetId}`);
   };
 
   if (!budget) return <main>Loading...</main>;
@@ -93,8 +110,8 @@ const BudgetDetails = (props) => {
               <tr key={expense._id}>
                 <td>{expense.name}</td>
                 <td>${expense.amount}</td>
-                <td><button><FaEdit /></button></td>
-                <td><button><FaTrash /></button></td>
+                <td><button onClick={() => handleUpdateExpense(expense._id, expense)}><FaEdit /></button></td>
+                <td><button onClick={() => handleDeleteExpense(expense._id)}><FaTrash /></button></td>
               </tr>
             ))}
           </tbody>
