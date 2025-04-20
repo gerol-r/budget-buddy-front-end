@@ -228,18 +228,26 @@ const deleteBudget = async (budgetId) => {
 
 const update = async (budgetId, budgetFormData) => {
     try {
-        const res = await fetch (`${BASE_URL}/${budgetId}`, {
-            method: 'PUT',
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(budgetFormData),
+        const res = await fetch(`${BASE_URL}/${budgetId}`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(budgetFormData),
         });
-    } catch (err) {
+    
+        // Check if the request was successful
+        if (!res.ok) {
+          throw new Error('Failed to update budget');
+        }
+    
+        // Return the updated budget object (response body)
+        return res.json(); // This is the key change!
+      } catch (err) {
         console.log(err);
-    }
-}
+      }
+    };
 
 // upd exp
 const updateExpense = async (budgetId, expenseId, expenseFormData) => {
