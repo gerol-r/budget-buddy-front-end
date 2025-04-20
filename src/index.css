@@ -127,6 +127,28 @@ tr:nth-child(even) {
   gap: 1rem;
 }
 /*expense form*/
+/******* budget form page *******/
+/* main */
+.b-form-page {
+  margin-left: 100px;
+  margin-bottom: 30px;
+}
+/* end main */
+.budget-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#b-form-group{
+  display: flex;
+  flex-direction: column;
+}
+#b-form-group input{
+  background-color: #0e233a;
+  border: solid 2px #182d45;
+  border-radius: 2px;
+}
+/*budget form page*/
 /******* end budget details page *******/
 
 @media (prefers-color-scheme: light) {
