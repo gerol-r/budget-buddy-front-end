@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import * as budgetService from "./services/budgetService";
 import BudgetList from "./components/BudgetList/BudgetList";
 import BudgetDetails from "./components/BudgetDetails/BudgetDetails";
+import ExpenseForm from './components/ExpenseForm/ExpenseForm';
 //** import components **//
 
 import { UserContext } from "./contexts/UserContext";
@@ -87,6 +88,15 @@ function App() {
     navigate(`/budgets/${budgetId}`);
   }
 
+  const handleAddExpense = async (budgetId, expenseFormData) => {
+    const updatedBudget = await budgetService.createExpense(budgetId, expenseFormData);
+    setBudgets(budgets.map(budget =>
+      budget._id === budgetId ? updatedBudget : budget
+    ));
+    navigate(`/budgets/${budgetId}`);
+  };
+  
+
   return (
     <>
       <NavBar />
@@ -98,6 +108,7 @@ function App() {
           <Route path='budgets/new' element={<BudgetForm handleAddBudget={handleAddBudget} />} />
           <Route path='/budgets/:budgetId' element={<BudgetDetails handleDeleteBudget={handleDeleteBudget} />} />
           <Route path='budgets/:budgetId/edit' element={<BudgetForm handleUpdateBudget={handleUpdateBudget} />} />
+          <Route path="/expenses/new" element={<ExpenseForm handleAddExpense={handleAddExpense} />}/>
           </>
         ) : (
           <>
