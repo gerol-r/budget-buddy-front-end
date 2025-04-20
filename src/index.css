@@ -54,7 +54,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.card{
+.card {
   border-radius: 8px;
   border: solid 2px #646cff;
   margin-top: 5px;
@@ -63,6 +63,45 @@ button:focus-visible {
   flex-direction: column;
   align-items: center;
 }
+/** expense table **/
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead {
+  width: 100%;
+}
+th,
+td {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+.expense-table #theader {
+  text-align: center;
+  width: 100%;
+}
+th:nth-child(1),
+th:nth-child(2) {
+  width: 35%;
+}
+th:nth-child(3),
+th:nth-child(4) {
+  width: 15%;
+}
+td:nth-child(1),
+td:nth-child(2) {
+  width: 35%;
+}
+td:nth-child(3),
+td:nth-child(4) {
+  width: 15%;
+}
+tr:nth-child(even) {
+  background-color: #2f2f2f;
+}
+
+/** expense table **/
 
 @media (prefers-color-scheme: light) {
   :root {
