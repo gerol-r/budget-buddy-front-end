@@ -36,32 +36,41 @@ const BudgetDetails = (props) => {
   if (!budget) return <main>Loading...</main>;
 
   return (
-    <main>
+    <main className="budget-details">
       <section>
         <h2>{budget.name} Budget</h2>
-        <div style={{ display: "flex", gap: "2rem" }}>
-          <div style={{ width: "300px", height: "300px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between"}}>
+          <div style={{ width: "300px", height: "300px"}}>
             {/* Use the new component */}
             <BudgetDonutChart
               budgetAmount={budget.amount}
               expenses={budget.expenses}
             />
           </div>
-          <div>
-            <p>Budget: ${budget.amount}</p>
-            <p>
-              Total Expenses: $
-              {budget.expenses.reduce((sum, e) => sum + e.amount, 0)}
+          <div style={{ width: "200px", height: "300px" }}> 
+            <p style={{ color: "rgb(255, 255, 255)", fontSize: "20px" }}>
+              <span style={{ color: "rgb(202, 202, 202)", fontSize: "16px" }}>
+                Budget:
+              </span>{" "}
+              ${budget.amount}
             </p>
-            <Link to={`/budgets/${budgetId}/edit`}>Edit Budget</Link>
-            <button onClick={() => props.handleDeleteBudget(budgetId)}>
-              Delete Budget
-            </button>
+            <p style={{ color: "rgb(255, 255, 255)", fontSize: "20px" }}>
+              <span style={{ color: "rgb(202, 202, 202)", fontSize: "16px" }}>
+                Total Expenses:
+              </span>{" "}
+              ${budget.expenses.reduce((sum, e) => sum + e.amount, 0)}
+            </p>
+            <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
+              <Link to={`/budgets/${budgetId}/edit`}>Edit Budget</Link>
+              <button onClick={() => props.handleDeleteBudget(budgetId)}>
+                Delete Budget
+              </button>
+            </div>
           </div>
         </div>
       </section>
       <section className="expense-section">
-        <h2>Expenses</h2>
+        <h2>{budget.name} Expenses</h2>
         <ExpenseForm handleAddExpense={handleAddExpense} />
 
         {!budget.expenses.length && <p>There are no expenses.</p>}
@@ -82,7 +91,7 @@ const BudgetDetails = (props) => {
             {budget.expenses.map((expense) => (
               <tr key={expense._id}>
                 <td>{expense.name}</td>
-                <td>{expense.amount}</td>
+                <td>${expense.amount}</td>
                 <td>Edit</td>
                 <td>Delete</td>
               </tr>

@@ -9,16 +9,22 @@ const BudgetDonutChart = ({ budgetAmount, expenses }) => {
     0
   );
   const remainingBudget = budgetAmount - totalExpenses;
+  const expensePercentage = (totalExpenses / budgetAmount) * 100;
+
+  const getExpenseColors = (percentage) =>{
+    if (percentage < 50) return "rgb(0, 142, 251)";
+    if (percentage < 75) return "rgb(239, 137, 12)";
+    return "rgb(180, 0, 66)";
+  };
 
   const chartData = {
-    labels: ["Expenses", "Remaining"],
+    labels: ["Remaining", "Expenses"],
     datasets: [
       {
-        data: [totalExpenses, remainingBudget],
-        backgroundColor: ["rgb(82, 64, 240)", "rgb(64, 67, 68)"],
-        borderColor: ["rgba(114, 114, 114, 0)", "rgba(114, 114, 114, 0)"],
-        borderWidth: 1,
-        borderRadius: [20, 1],
+        data: [remainingBudget, totalExpenses],
+        backgroundColor: ["rgba(25, 64, 106, 0.92)", getExpenseColors(expensePercentage)],
+        borderWidth: 0,
+        borderRadius: [1, 20],
         spacing: -10,
       },
     ],
@@ -29,7 +35,9 @@ const BudgetDonutChart = ({ budgetAmount, expenses }) => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "right",
+        position: "bottom",
+        reverse: "true",
+        labels: {color: "white"}
       },
       tooltip: {
         callbacks: {
