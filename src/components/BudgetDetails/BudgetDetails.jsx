@@ -42,6 +42,8 @@ const BudgetDetails = (props) => {
 
   if (!budget) return <main>Loading...</main>
 
+  if (!budget) return <main>Loading...</main>
+
   return (
     <main>
       <section>
@@ -58,7 +60,7 @@ const BudgetDetails = (props) => {
       <section>
         <h1>Expenses:</h1>
         <ExpenseForm handleAddExpense={handleAddExpense} />
-
+        
         {budget.expenses && budget.expenses.length > 0 ? (
           budget.expenses.map((expense) => (
             <table key={expense._id}>
