@@ -8,8 +8,10 @@ const BudgetDonutChart = ({ budgetAmount, expenses }) => {
     (sum, expense) => sum + expense.amount,
     0
   );
-  const remainingBudget = budgetAmount - totalExpenses;
+  // const remainingBudget = budgetAmount - totalExpenses;
   const expensePercentage = (totalExpenses / budgetAmount) * 100;
+  const displayExpenses = Math.min(totalExpenses, budgetAmount);
+  const displayRemaining = Math.max(0, budgetAmount - displayExpenses);
 
   const getExpenseColors = (percentage) =>{
     if (percentage < 50) return "rgb(0, 142, 251)";
@@ -21,7 +23,7 @@ const BudgetDonutChart = ({ budgetAmount, expenses }) => {
     labels: ["Remaining", "Expenses"],
     datasets: [
       {
-        data: [remainingBudget, totalExpenses],
+        data: [displayRemaining, displayExpenses],
         backgroundColor: ["rgba(25, 64, 106, 0.92)", getExpenseColors(expensePercentage)],
         borderWidth: 0,
         borderRadius: [1, 20],
@@ -43,9 +45,11 @@ const BudgetDonutChart = ({ budgetAmount, expenses }) => {
         callbacks: {
           label: (context) => {
             const label = context.label || "";
-            const value = context.raw || 0;
-            const percentage = Math.round((value / budgetAmount) * 100);
-            return `${label}: $${value} (${percentage}%)`;
+            const actualValue = context.label === "Expenses" 
+            ? totalExpenses 
+            : Math.max(0, budgetAmount - totalExpenses);
+          const actualPercentage = Math.round((actualValue / budgetAmount) * 100);
+          return `${label}: $${actualValue} (${actualPercentage}%)`;
           },
         },
       },
