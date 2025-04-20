@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #021422;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +15,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: rgb(61, 126, 202);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: rgb(68, 143, 229);
+  text-shadow: #64a2f988 0 0 2px;
 }
 
 body {
@@ -37,43 +38,62 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
+  border-color: #182d45;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #0e233a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border: 3px solid;
+  border-color: #1d3755;
+  box-shadow: #222dff70 0 0 2px;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+/******* budget list page *******/
+/* main */
+.card-container {
+  margin-left: 50px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+/* end main */
 .card {
-  border-radius: 8px;
-  border: solid 2px #646cff;
+  background-color: #0e233a;
+  border-radius: 3px;
+  border: solid 2px #182d45;
   margin-top: 5px;
   width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/** expense table **/
+/******* end budget list page *******/
+/******* budget details page *******/
+/* main */
+.budget-details {
+  margin-left: 50px;
+  margin-bottom: 30px;
+}
+/* end main */
+/* expense table */
 table {
   width: 100%;
   border-collapse: collapse;
-}
-thead {
-  width: 100%;
+  margin-top: 1rem;
 }
 th,
 td {
-  border: 1px solid black;
+  border: 2px solid #1b3450;
   text-align: left;
   padding: 8px;
 }
@@ -98,10 +118,16 @@ td:nth-child(4) {
   width: 15%;
 }
 tr:nth-child(even) {
-  background-color: #2f2f2f;
+  background-color: #0e233a;
 }
-
-/** expense table **/
+/* end expense table */
+/*expense form*/
+.expense-form {
+  display: flex;
+  gap: 1rem;
+}
+/*expense form*/
+/******* end budget details page *******/
 
 @media (prefers-color-scheme: light) {
   :root {

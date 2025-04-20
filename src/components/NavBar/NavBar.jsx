@@ -16,11 +16,11 @@ const NavBar = () => {
       {user ? (
         <ul style={{ listStyleType: "none" }}>
           <li>
-            <div
+            <div className="user-profile"
               style={{
                 display: "flex",
                 flexDirection: "column",
-                border: "solid 3px lightblue",
+                border: "solid 3px #182D45",
                 padding: "10px 0 10px 20px",
                 width: "75px",
                 borderRadius: "50px",
