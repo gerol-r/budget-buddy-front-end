@@ -5,6 +5,7 @@ import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import { UserContext } from "../../contexts/UserContext";
 import BudgetDonutChart from "../BudgetDonutChart/BudgetDonutChart";
 import { _alignPixel } from "chart.js/helpers";
+import { FaEdit, FaTrash } from "react-icons/fa"
 
 const BudgetDetails = (props) => {
   console.log(props);
@@ -61,9 +62,9 @@ const BudgetDetails = (props) => {
               ${budget.expenses.reduce((sum, e) => sum + e.amount, 0)}
             </p>
             <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
-              <Link to={`/budgets/${budgetId}/edit`}>Edit Budget</Link>
+              <Link to={`/budgets/${budgetId}/edit`}><FaEdit /></Link>
               <button onClick={() => props.handleDeleteBudget(budgetId)}>
-                Delete Budget
+                <FaTrash />
               </button>
             </div>
           </div>
@@ -92,8 +93,8 @@ const BudgetDetails = (props) => {
               <tr key={expense._id}>
                 <td>{expense.name}</td>
                 <td>${expense.amount}</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <td><button><FaEdit /></button></td>
+                <td><button><FaTrash /></button></td>
               </tr>
             ))}
           </tbody>
