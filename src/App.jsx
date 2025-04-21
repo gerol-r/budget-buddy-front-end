@@ -10,6 +10,8 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import * as budgetService from "./services/budgetService";
 import BudgetList from "./components/BudgetList/BudgetList";
 import BudgetDetails from "./components/BudgetDetails/BudgetDetails";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 //** import components **//
 
 import { UserContext } from "./contexts/UserContext";
@@ -51,6 +53,7 @@ function App() {
   const handleDeleteBudget = async (budgetId) => {
     const deletedBudget = await budgetService.deleteBudget(budgetId);
     setBudgets(budgets.filter((budget) => budget._id !== deletedBudget._id));
+    toast.success("Budget Deleted");
     navigate("/budgets");
   };
 
@@ -81,6 +84,16 @@ function App() {
           </>
         )}
       </Routes>
+      <ToastContainer 
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }

@@ -25,6 +25,7 @@ Budget Buddy is a group project completed by 3 developers; Zebastian, Gerol, and
 * react-dom
 * react-icons
 * react-chartjs-2
+* react-toastify
 * dotenv
 * bcrypt
 * express
@@ -44,6 +45,7 @@ Budget Buddy is a group project completed by 3 developers; Zebastian, Gerol, and
 * Icons instead of "edit" "delete" buttons
 * Chart of budget breakdown
 * Custom Budget Buddy mascot 
+* Toastify notifications 
 
 
 ## Wireframe Link
@@ -99,3 +101,8 @@ For this application we ran across some issues with the username and avatar stay
 - https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event
 - https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html#local-storage
 - https://datatracker.ietf.org/doc/html/rfc7519#section-4.1
+* React Toastify:
+While developing Budget Buddy we came across this package called react-toastify. This package was super simple and easy to implement into our code. By adding this we were able to have a pop up notification appear upon the user completing actions like submitting a form or deleting an expense. The docs were super easy to follow and videos were also very easy to follow along with. 
+- https://www.youtube.com/watch?v=mapbus0I6X8&list=PL4cUxeGkcC9iNnY07bh_UPaRIQZcJfARY&index=4
+- https://fkhadra.github.io/react-toastify/installation
+
