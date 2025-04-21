@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { signUp } from "../../services/authService.js";
 import { UserContext } from "../../contexts/UserContext.jsx";
+import BudgetFormBuddy from "../../Images/budget-form-buddy.png";
 
 const SignUpForm = () => {
 	const navigate = useNavigate();
@@ -39,70 +40,92 @@ const SignUpForm = () => {
 	};
 
 	return (
-		<main>
-			<h1>Sign Up for Budget Buddy</h1>
-			<p>{message}</p>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="username">Username:</label>
-					<input
-						type="text"
-						id="name"
-						value={username}
-						name="username"
-						onChange={handleChange}
-						required
-					/>
-				</div>
-				<div>
-					<label htmlFor="password">Password:</label>
-					<input
-						type="password"
-						id="password"
-						value={password}
-						name="password"
-						onChange={handleChange}
-						required
-					/>
-				</div>
-				<div>
-					<label htmlFor="confirm">Confirm Password:</label>
-					<input
-						type="password"
-						id="confirm"
-						value={passwordConf}
-						name="passwordConf"
-						onChange={handleChange}
-						required
-					/>
-					<div>
-						<label htmlFor="income">Income:</label>
-						<input
-							type="number"
-							id="income"
-							value={income}
-							name="income"
-							onChange={handleChange}
-							required
-						/>
-					</div>
-					<div>
-						<label htmlFor="savingsGoal">Savings Goal:</label>
-						<input
-							type="number"
-							id="savingsGoal"
-							value={savingsGoal}
-							name="savingsGoal"
-							onChange={handleChange}
-							required
-						/>
-					</div>
-				</div>
-				<div>
+		<main className="b-form-page">
+			<div style={{ position: "relative", width: "484px", height: "654px" }}>
+				{/* Image */}
+				<img
+					src={BudgetFormBuddy}
+					alt="Background"
+					style={{ width: "100%", height: "100%", objectFit: "cover" }}
+				/>
+
+				{/* Form */}
+				<div
+					style={{
+						position: "absolute",
+						top: "270px" /* Adjust based on the specific part of the image */,
+						left: "120px" /* Adjust based on the specific part of the image */,
+						width: "232px",
+						height: "229px",
+
+						borderRadius: "8px" /* Optional: Add rounded corners */,
+						boxShadow:
+							"0 4px 8px rgba(0, 0, 0, 0.3)" /* Optional: Add a shadow for better visibility */,
+					}}
+				>
+					{/* Form content */}
+            <p>Sign Up For Budget Buddy</p>
+					<form className="budget-form" onSubmit={handleSubmit}>
+						<div id="b-form-group">
+							<label htmlFor="username">Username:</label>
+							<input
+								required
+								type="text"
+								name="username"
+								id="username"
+								value={formData.username}
+								onChange={handleChange}
+							/>
+						</div>
+						<div id="b-form-group">
+							<label htmlFor="password">Password:</label>
+							<input
+								required
+								type="password"
+                autoComplete='off'
+								name="password"
+								id="password"
+								value={formData.password}
+								onChange={handleChange}
+							/>
+						</div>
+            <div id="b-form-group">
+              <label htmlFor="confirm">Confirm Password:</label>
+              <input type="password" 
+              id="confirm"
+              value={passwordConf}
+              name="passwordConf"
+              onChange={handleChange}
+              required
+              />
+            </div>
+            <div id="b-form-group">
+              <label htmlFor="income">Income:</label>
+              <input type="number" 
+              id="income"
+              value={income}
+              name="income"
+              onChange={handleChange}
+              required
+              />
+            </div>
+            <div id="b-form-group">
+              <label htmlFor="savingsGoal">Savings Goal:</label>
+              <input type="number" 
+              id="savingsGoal"
+              value={savingsGoal}
+              name="savingsGoal"
+              onChange={handleChange}
+              required
+              />
+            </div>
+            <div>
 					<button disabled={isFormInvalid()}>Sign Up</button>
 					<button onClick={() => navigate("/")}>Cancel</button>
 				</div>
-			</form>
+      </form>
+      </div>
+			</div>
 		</main>
 	);
 };
