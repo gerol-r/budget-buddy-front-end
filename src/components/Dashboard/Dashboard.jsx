@@ -12,7 +12,7 @@ const Dashboard = () => {
     return (
 
         <main>
-            <h1>Welcome to the super awesome Home Page {user.username} <img
+            <h1>Welcome to the Home Page {user.username} <img
               src={user?.avatar}
               alt="User Avatar"
               style={{ width: "50px", borderRadius: "50%" }}
