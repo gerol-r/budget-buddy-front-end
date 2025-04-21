@@ -80,7 +80,7 @@ A fun and unique touch to our app was the introduction of the “Buddy” charac
 [Github.com](https://github.com/gerol-r/budget-buddy-backend-2)
 * If unable to view please go live locally through VS Code
 * You can view the app deployed live here:
-[BudgetBuddy]()
+[BudgetBuddy](https://the-budget-buddy-app.netlify.app/)
 
 ## <a name="Zebastian Rodriguez"></a>The Team Behind Budget Buddy
 * Zebastian- Scrum Lead [GitHub](https://github.com/Zebyrod)
