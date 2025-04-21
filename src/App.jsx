@@ -14,6 +14,7 @@ import BudgetDetails from "./components/BudgetDetails/BudgetDetails";
 
 import { UserContext } from "./contexts/UserContext";
 import { useState, useContext, useEffect } from "react";
+import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
 
 function App() {
   const [budgets, setBudgets] = useState([]); //new- initialized empty array
@@ -71,6 +72,7 @@ function App() {
           <Route path='budgets/new' element={<BudgetForm handleAddBudget={handleAddBudget} />} />
           <Route path='/budgets/:budgetId' element={<BudgetDetails handleDeleteBudget={handleDeleteBudget} />} />
           <Route path='budgets/:budgetId/edit' element={<BudgetForm handleUpdateBudget={handleUpdateBudget} />} />
+          <Route path='budgets/:budgetId/expenses/:expenseId/edit' element={<ExpenseForm handleUpdateBudget={handleUpdateBudget} />} />
           </>
         ) : (
           <>

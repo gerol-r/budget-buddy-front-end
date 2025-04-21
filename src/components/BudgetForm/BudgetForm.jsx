@@ -29,7 +29,7 @@ const BudgetForm = (props) => {
 		evt.preventDefault();
 		if (budgetId) {
 			props.handleUpdateBudget(budgetId, formData);
-      console.log('Submitting updated budget:', formData);
+			console.log("Submitting updated budget:", formData);
 		} else {
 			console.log(formData);
 			props.handleAddBudget(formData);
@@ -92,34 +92,6 @@ const BudgetForm = (props) => {
 					</form>
 				</div>
 			</div>
-
-			{/* <form className="budget-form" onSubmit={handleFormSubmit}>
-        <h3>Add a New Budget</h3>
-        <div id="b-form-group">
-          <label htmlFor="budget-input">Budget Name </label>
-          <input
-            required
-            type="text"
-            name="name"
-            id="budget-input"
-            value={formData.name}
-            onChange={handleFormChange}
-          />
-        </div>
-        <div id="b-form-group">
-          <label htmlFor="budget-amount">Amount </label>
-          <input
-            required
-            type="number"
-            name="amount"
-            id="budget-amount"
-            value={formData.amount}
-            onChange={handleFormChange}
-          />
-        </div>
-
-        <button type="submit">Add Budget</button>
-      </form> */}
 		</main>
 	);
 };
