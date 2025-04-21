@@ -76,10 +76,10 @@ Budget Buddy is a group project completed by 3 developers; Zebastian, Gerol, and
 * You can view the app deployed live here:
 [BudgetBuddy]()
 
-## <a name="Zebastian Rodriguez"></a>About The Group
-* Zebastian- Scrum Lead 
-* Gerol- Lead Front-end
-* Nataliia- Lead Back-end 
+## <a name="Zebastian Rodriguez"></a>The Team Behind Budget Buddy
+* Zebastian- Scrum Lead [GitHub](https://github.com/Zebyrod)
+* Gerol- Lead Front-end [GitHub](https://github.com/gerol-r)
+* Nataliia- Lead Back-end [GitHub](https://github.com/nhalko09)
 
 We are all developers looking to improve our abilities within the development world! This project was a great learning experience for all of us. Working as a group on different time zones and on different schedules, it was a challenge we had to learn to adapt to and deal with. Previously our projects were all solo, so this time around being able to communicate clearly when we were not all available made a huge difference for our group and the time we were commiting to this project. I think I can speak for all of us in saying this was quite a different challenge, but one that we all rose to the occasion and overcame it together. Completing this project only makes us more excited to continue to dive into the world of tech! Working in a small dev team and being able to accomplish an application like this only makes us dream of what else we can achieve throughout our coding careers!
 

@@ -1,4 +1,4 @@
-
+import WelcomeBuddy from "../../Images/Welcome-buddy.png";
 
 const Landing = () => {
 	return (
@@ -7,8 +7,7 @@ const Landing = () => {
 			<h1>Take Control of Your Finances with Budget Buddy</h1>
 			<p>
 				Welcome to Budget Buddy — your simple, powerful tool for managing money
-				with confidence. Create personalized budgets, track your spending, and
-				set savings goals all in one place.
+				with confidence. Create personalized budgets and track your spending!
 			</p>
 			<p>
 				Organize your expenses by category like “Housing,” “Transportation,” or
@@ -20,6 +19,9 @@ const Landing = () => {
 				<strong>Sign Up</strong> now and start building better money habits
 				today.
 			</p>
+      <div>
+      <img src={WelcomeBuddy} alt="logo"  className="welcome-image"/>
+      </div>
       
 		</main>
     </div>

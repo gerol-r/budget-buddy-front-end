@@ -1,8 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-// import * as budgetService from "../../services/budgetService";
-// import BudgetForm from "../BudgetForm/BudgetForm";
-// import BudgetCard from "../Card/BudgetCard";
+import WelcomeBuddy from "../../Images/Welcome-buddy.png";
 import * as userService from "../../services/userService"
 
 const Dashboard = () => {
@@ -12,11 +10,14 @@ const Dashboard = () => {
     return (
 
         <main>
-            <h1>Welcome to the Home Page {user.username} <img
+            <h1>Welcome! {user.username} <img
               src={user?.avatar}
               alt="User Avatar"
               style={{ width: "50px", borderRadius: "50%" }}
             />!</h1>
+            <div>
+                <img src={WelcomeBuddy} alt="logo"  className="welcome-image"/>
+            </div>
         </main>
     )
 }
