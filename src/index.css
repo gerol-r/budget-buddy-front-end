@@ -57,6 +57,9 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+#logo{
+  max-width: 150px;
+}
 /******* budget list page *******/
 /* main */
 .card-container {
@@ -119,6 +122,21 @@ td:nth-child(4) {
 }
 tr:nth-child(even) {
   background-color: #0e233a;
+}
+tr:nth-child(odd) button{
+  background-color: #02142200;
+}
+tr:nth-child(odd) button:hover{
+  background-color: #02142200;
+  border: none;
+}
+.del-exp-btn{
+  background-color: none !important;
+  border: none;
+}
+.del-exp-btn:hover{
+  background-color: none !important;
+  border: none;
 }
 /* end expense table */
 /*expense form*/

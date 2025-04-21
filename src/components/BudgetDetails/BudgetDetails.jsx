@@ -33,14 +33,13 @@ const BudgetDetails = (props) => {
       budgetId,
       expenseFormData
     );
-    setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });
-  };
+    setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });};
 
   const handleUpdateExpense = async (expenseId, expenseFormData) => {
     const updatedExpense = await budgetService.updateExpense(expenseId, expenseFormData)
     setBudget(budget.map((expense) => (expenseId === expense._id ? updatedExpense : expense)))
     navigate(`/budgets/${budgetId}`);
-  }
+  };
 
   const handleDeleteExpense = async (expenseId) => {
     const deletedExpense = await budgetService.deleteExpense(budgetId, expenseId);
@@ -59,7 +58,6 @@ const BudgetDetails = (props) => {
         <h2>{budget.name} Budget</h2>
         <div style={{ display: "flex", justifyContent: "space-between"}}>
           <div style={{ width: "300px", height: "300px"}}>
-            {/* Use the new component */}
             <BudgetDonutChart
               budgetAmount={budget.amount}
               expenses={budget.expenses}
@@ -103,15 +101,13 @@ const BudgetDetails = (props) => {
             <th>Name</th>
             <th>Amount</th>
             <th></th>
-            <th></th>
           </tr>
           <tbody>
             {budget.expenses.map((expense) => (
               <tr key={expense._id}>
                 <td>{expense.name}</td>
                 <td>${expense.amount}</td>
-                <td><button onClick={() => handleUpdateExpense(expense._id, expense)}><FaEdit /></button></td>
-                <td><button onClick={() => handleDeleteExpense(expense._id)}><FaTrash /></button></td>
+                <td><button className="del-exp-btn" onClick={() => handleDeleteExpense(expense._id)}><FaTrash /></button></td>
               </tr>
             ))}
           </tbody>

@@ -1,6 +1,6 @@
 const Landing = () => {
   return (
-    <main>
+    <main style={{marginLeft:"30px"}}>
       <h1>Hello, and welcome to Budget Buddy.</h1>
       <p>
         Budget Buddy is a budget management app where you can create and manage

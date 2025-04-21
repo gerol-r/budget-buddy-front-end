@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
 import * as budgetService from "../../services/budgetService";
-import BudgetFormBuddy from "../../../public/budget-form-buddy.png";
+import BudgetFormBuddy from "../../Images/budget-form-buddy.png";
 
 const BudgetForm = (props) => {
 	const [formData, setFormData] = useState({
