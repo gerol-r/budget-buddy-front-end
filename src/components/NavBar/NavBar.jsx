@@ -4,13 +4,12 @@ import { UserContext } from "../../contexts/UserContext";
 import BudgetBuddyLogo from "../../Images/Budget-Buddy-Logo.png";
 
 const NavBar = () => {
-	const { user } = useContext(UserContext);
-	// console.log(user)
-	const handleSignOut = () => {
-		localStorage.removeItem("token");
-		localStorage.removeItem("user");
-		setUser(null);
-	};
+  const { user } = useContext(UserContext);
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
+  };
 
   return (
     <nav>
@@ -73,9 +72,9 @@ const NavBar = () => {
       ) : (
         <ul style={{ listStyleType: "none" }}>
           <li>
-          <div className="logo" style={{ marginBottom:"20px" }}>
-                <img id="logo" src={BudgetBuddyLogo} alt="logo" />
-              </div>
+            <div className="logo" style={{ marginBottom: "20px" }}>
+              <img id="logo" src={BudgetBuddyLogo} alt="logo" />
+            </div>
           </li>
           <li>
             <Link to="/">Home</Link>
@@ -90,6 +89,5 @@ const NavBar = () => {
       )}
     </nav>
   );
-
 };
 export default NavBar;

@@ -3,30 +3,26 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/auth`;
 const signUp = async (formData) => {
   try {
     const res = await fetch(`${BASE_URL}/sign-up`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
 
     const data = await res.json();
 
     if (data.err) {
-        console.log(`data error: ${data.err}`)
       throw new Error(data.err);
     }
 
     if (data.token) {
-      localStorage.setItem('token', data.token);
-      // const payload = JSON.parse(atob(data.token.split('.')[1])).payload;
-      // return payload;
-      const userData = JSON.parse(atob(data.token.split('.')[1])).payload;
-      localStorage.setItem('user', JSON.stringify(userData)); //ensureing jwt auth AND user data
+      localStorage.setItem("token", data.token);
+      const userData = JSON.parse(atob(data.token.split(".")[1])).payload;
+      localStorage.setItem("user", JSON.stringify(userData)); //ensureing jwt auth AND user data
       return userData;
     }
 
-    throw new Error('Invalid response from server');
+    throw new Error("Invalid response from server");
   } catch (err) {
-    console.log("Signup error:", err);
     throw new Error(err);
   }
 };
@@ -34,8 +30,8 @@ const signUp = async (formData) => {
 const signIn = async (formData) => {
   try {
     const res = await fetch(`${BASE_URL}/sign-in`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
 
@@ -46,21 +42,16 @@ const signIn = async (formData) => {
     }
 
     if (data.token) {
-      localStorage.setItem('token', data.token);
-      // return JSON.parse(atob(data.token.split('.')[1])).payload
-      const userData = JSON.parse(atob(data.token.split('.')[1])).payload;
-      localStorage.setItem('user', JSON.stringify(userData));
+      localStorage.setItem("token", data.token);
+      const userData = JSON.parse(atob(data.token.split(".")[1])).payload;
+      localStorage.setItem("user", JSON.stringify(userData));
       return userData;
     }
 
-    throw new Error('Invalid response from server');
+    throw new Error("Invalid response from server");
   } catch (err) {
-    console.log(err);
     throw new Error(err);
   }
 };
 
-export {
-  signUp,
-  signIn
-};
+export { signUp, signIn };

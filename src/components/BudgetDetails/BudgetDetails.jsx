@@ -6,19 +6,16 @@ import { UserContext } from "../../contexts/UserContext";
 import BudgetDonutChart from "../BudgetDonutChart/BudgetDonutChart";
 import { _alignPixel } from "chart.js/helpers";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const BudgetDetails = (props) => {
-  console.log(props);
   const { budgetId } = useParams();
-  // console.log('budgetId', budgetId);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [budget, setBudget] = useState(null);
-
 
   // useEffect
   useEffect(() => {
@@ -38,14 +35,19 @@ const BudgetDetails = (props) => {
     );
     const updatedBudget = await budgetService.show(budgetId);
     setBudget({ ...updatedBudget });
-    toast.success("Expense Added!")
+    toast.success("Expense Added!");
   };
 
   const handleDeleteExpense = async (expenseId) => {
-    const deletedExpense = await budgetService.deleteExpense(budgetId, expenseId);
+    const deletedExpense = await budgetService.deleteExpense(
+      budgetId,
+      expenseId
+    );
     setBudget({
       ...budget,
-      expenses: budget.expenses.filter((expense) => expense._id !== deletedExpense.expenseId),
+      expenses: budget.expenses.filter(
+        (expense) => expense._id !== deletedExpense.expenseId
+      ),
     });
     toast.info("Expense Deleted");
     navigate(`/budgets/${budgetId}`);
@@ -57,14 +59,14 @@ const BudgetDetails = (props) => {
     <main className="budget-details">
       <section>
         <h2>{budget.name} Budget</h2>
-        <div style={{ display: "flex", justifyContent: "space-between"}}>
-          <div style={{ width: "300px", height: "300px"}}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ width: "300px", height: "300px" }}>
             <BudgetDonutChart
               budgetAmount={budget.amount}
               expenses={budget.expenses}
             />
           </div>
-          <div style={{ width: "200px", height: "300px" }}> 
+          <div style={{ width: "200px", height: "300px" }}>
             <p style={{ color: "rgb(255, 255, 255)", fontSize: "20px" }}>
               <span style={{ color: "rgb(202, 202, 202)", fontSize: "16px" }}>
                 Budget:
@@ -77,8 +79,12 @@ const BudgetDetails = (props) => {
               </span>{" "}
               ${budget.expenses.reduce((sum, e) => sum + e.amount, 0)}
             </p>
-            <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
-              <Link to={`/budgets/${budgetId}/edit`}><FaEdit /></Link>
+            <div
+              style={{ display: "flex", gap: "1rem", flexDirection: "column" }}
+            >
+              <Link to={`/budgets/${budgetId}/edit`}>
+                <FaEdit />
+              </Link>
               <button onClick={() => props.handleDeleteBudget(budgetId)}>
                 <FaTrash />
               </button>
@@ -108,7 +114,14 @@ const BudgetDetails = (props) => {
               <tr key={expense._id}>
                 <td>{expense.name}</td>
                 <td>${expense.amount}</td>
-                <td><button className="del-exp-btn" onClick={() => handleDeleteExpense(expense._id)}><FaTrash /></button></td>
+                <td>
+                  <button
+                    className="del-exp-btn"
+                    onClick={() => handleDeleteExpense(expense._id)}
+                  >
+                    <FaTrash />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
