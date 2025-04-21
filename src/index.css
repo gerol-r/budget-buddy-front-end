@@ -174,7 +174,7 @@ tr:nth-child(odd) button:hover{
 /*budget form page*/
 /******* end budget details page *******/
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     color: rgba(255, 255, 255, 0.87);
     background-color: #021422;
