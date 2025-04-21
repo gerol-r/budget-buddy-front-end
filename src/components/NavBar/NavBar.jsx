@@ -2,14 +2,16 @@ import { useContext } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 import BudgetBuddyLogo from "../../Images/Budget-Buddy-Logo.png";
+import { toast } from "react-toastify"
 
 const NavBar = () => {
-	const { user } = useContext(UserContext);
+	const { user, setUser } = useContext(UserContext);
 	// console.log(user)
 	const handleSignOut = () => {
-		localStorage.removeItem("token");
+    localStorage.removeItem("token");
 		localStorage.removeItem("user");
 		setUser(null);
+    toast.success("Signed Out!");
 	};
 
   return (
