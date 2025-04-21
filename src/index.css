@@ -169,6 +169,11 @@ tr:nth-child(odd) button:hover{
 /*budget form page*/
 /******* end budget details page *******/
 
+.welcome-image {
+  width: 50%;
+  height: auto;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
