@@ -11,7 +11,7 @@ import * as budgetService from "./services/budgetService";
 import BudgetList from "./components/BudgetList/BudgetList";
 import BudgetDetails from "./components/BudgetDetails/BudgetDetails";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 //** import components **//
 
 import { UserContext } from "./contexts/UserContext";
@@ -23,7 +23,7 @@ function App() {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
-  // useEffect 
+  // useEffect
 
   useEffect(() => {
     const fetchAllBudgets = async () => {
@@ -33,21 +33,19 @@ function App() {
     if (user) fetchAllBudgets();
   }, [user]);
 
-
-
   const handleAddBudget = async (budgetFormData) => {
     // Step 1: Add the new budget
     const newBudget = await budgetService.create(budgetFormData);
-  
+
     // Step 2: Refetch the updated list of budgets (if needed)
     const updatedBudgets = await budgetService.index();
-  
+
     // Step 3: Update state with the new list
     // had to add in the use of index to force the re-render of the budgets on form submit. Before form was submitting data but not reflecting that on the budgetList
     setBudgets(updatedBudgets);
-  
+
     // Step 4: Navigate to the budgets list page
-    navigate('/budgets');
+    navigate("/budgets");
   };
 
   const handleDeleteBudget = async (budgetId) => {
@@ -57,34 +55,51 @@ function App() {
     navigate("/budgets");
   };
 
-
   const handleUpdateBudget = async (budgetId, budgetFormData) => {
     const updatedBudget = await budgetService.update(budgetId, budgetFormData);
-    setBudgets(budgets.map((budget) => (budgetId === budget._id ? updatedBudget : budget)));
+    setBudgets(
+      budgets.map((budget) =>
+        budgetId === budget._id ? updatedBudget : budget
+      )
+    );
     navigate(`/budgets/${budgetId}`);
-  }
+  };
 
   return (
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={user ? <Dashboard /> : <Landing />} />
+        <Route path="/" element={user ? <Dashboard /> : <Landing />} />
         {user ? (
           <>
-          <Route path='/budgets' element={<BudgetList budgets={budgets} />} />
-          <Route path='budgets/new' element={<BudgetForm handleAddBudget={handleAddBudget} />} />
-          <Route path='/budgets/:budgetId' element={<BudgetDetails handleDeleteBudget={handleDeleteBudget} />} />
-          <Route path='budgets/:budgetId/edit' element={<BudgetForm handleUpdateBudget={handleUpdateBudget} />} />
-          <Route path='budgets/:budgetId/expenses/:expenseId/edit' element={<ExpenseForm handleUpdateBudget={handleUpdateBudget} />} />
+            <Route path="/budgets" element={<BudgetList budgets={budgets} />} />
+            <Route
+              path="budgets/new"
+              element={<BudgetForm handleAddBudget={handleAddBudget} />}
+            />
+            <Route
+              path="/budgets/:budgetId"
+              element={
+                <BudgetDetails handleDeleteBudget={handleDeleteBudget} />
+              }
+            />
+            <Route
+              path="budgets/:budgetId/edit"
+              element={<BudgetForm handleUpdateBudget={handleUpdateBudget} />}
+            />
+            <Route
+              path="budgets/:budgetId/expenses/:expenseId/edit"
+              element={<ExpenseForm handleUpdateBudget={handleUpdateBudget} />}
+            />
           </>
         ) : (
           <>
-          <Route path='/sign-up' element={<SignUpForm />} />
-          <Route path='/sign-in' element={<SignInForm />} />
+            <Route path="/sign-up" element={<SignUpForm />} />
+            <Route path="/sign-in" element={<SignInForm />} />
           </>
         )}
       </Routes>
-      <ToastContainer 
+      <ToastContainer
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}

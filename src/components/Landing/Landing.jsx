@@ -1,7 +1,8 @@
 import WelcomeBuddy from "../../Images/Welcome-buddy.png";
 
+
 const Landing = () => {
-	return (
+  return (
     <div>
 		<main style={{ marginLeft: "30px" }}>
 			<h1>Take Control of Your Finances with Budget Buddy</h1>
@@ -25,7 +26,7 @@ const Landing = () => {
       
 		</main>
     </div>
-	);
+  );
 };
 
 export default Landing;

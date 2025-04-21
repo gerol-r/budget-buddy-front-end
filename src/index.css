@@ -62,7 +62,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-#logo{
+#logo {
   max-width: 150px;
 }
 /******* budget list page *******/
@@ -128,18 +128,18 @@ td:nth-child(4) {
 tr:nth-child(even) {
   background-color: #0e233a;
 }
-tr:nth-child(odd) button{
+tr:nth-child(odd) button {
   background-color: #02142200;
 }
-tr:nth-child(odd) button:hover{
+tr:nth-child(odd) button:hover {
   background-color: #02142200;
   border: none;
 }
-.del-exp-btn{
+.del-exp-btn {
   background-color: none !important;
   border: none;
 }
-.del-exp-btn:hover{
+.del-exp-btn:hover {
   background-color: none !important;
   border: none;
 }
@@ -162,11 +162,11 @@ tr:nth-child(odd) button:hover{
   flex-direction: column;
   gap: 10px;
 }
-#b-form-group{
+#b-form-group {
   display: flex;
   flex-direction: column;
 }
-#b-form-group input{
+#b-form-group input {
   background-color: #0e233a;
   border: solid 2px #182d45;
   border-radius: 2px;
@@ -178,12 +178,11 @@ tr:nth-child(odd) button:hover{
 /*budget form page*/
 /******* end budget details page *******/
 
+@media (prefers-color-scheme: dark) {
 .welcome-image {
   width: 50%;
   height: auto;
 }
-
-@media (prefers-color-scheme: light) {
   :root {
     color: rgba(255, 255, 255, 0.87);
     background-color: #021422;
@@ -199,19 +198,17 @@ tr:nth-child(odd) button:hover{
     cursor: pointer;
     transition: border-color 0.25s;
   }
-  tr:nth-child(odd) button{
+  tr:nth-child(odd) button {
     background-color: #02142200;
   }
-  tr:nth-child(odd) button:hover{
+  tr:nth-child(odd) button:hover {
     background-color: #02142200;
     border: none;
   }
-  .del-exp-btn{
+  .del-exp-btn {
     background-color: none !important;
     border: none;
   }
-  .del-exp-btn:hover{
+  .del-exp-btn:hover {
     background-color: none !important;
     border: none;
-  }
-}

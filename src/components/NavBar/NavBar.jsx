@@ -5,14 +5,12 @@ import BudgetBuddyLogo from "../../Images/Budget-Buddy-Logo.png";
 import { toast } from "react-toastify"
 
 const NavBar = () => {
-	const { user, setUser } = useContext(UserContext);
-	// console.log(user)
-	const handleSignOut = () => {
+  const { user } = useContext(UserContext);
+  const handleSignOut = () => {
     localStorage.removeItem("token");
-		localStorage.removeItem("user");
-		setUser(null);
-    toast.success("Signed Out!");
-	};
+    localStorage.removeItem("user");
+    setUser(null);
+  };
 
   return (
     <nav>
@@ -75,9 +73,9 @@ const NavBar = () => {
       ) : (
         <ul style={{ listStyleType: "none" }}>
           <li>
-          <div className="logo" style={{ marginBottom:"20px" }}>
-                <img id="logo" src={BudgetBuddyLogo} alt="logo" />
-              </div>
+            <div className="logo" style={{ marginBottom: "20px" }}>
+              <img id="logo" src={BudgetBuddyLogo} alt="logo" />
+            </div>
           </li>
           <li>
             <Link to="/">Home</Link>
@@ -92,6 +90,5 @@ const NavBar = () => {
       )}
     </nav>
   );
-
 };
 export default NavBar;
