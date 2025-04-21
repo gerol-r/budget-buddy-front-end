@@ -212,3 +212,5 @@ tr:nth-child(odd) button:hover {
   .del-exp-btn:hover {
     background-color: none !important;
     border: none;
+  }
+}
