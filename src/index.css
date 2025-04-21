@@ -47,6 +47,7 @@ button {
   background-color: #0e233a;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: white;
 }
 button:hover {
   border: 3px solid;
@@ -165,19 +166,43 @@ tr:nth-child(odd) button:hover{
   background-color: #0e233a;
   border: solid 2px #182d45;
   border-radius: 2px;
+  color: white; 
+}
+#b-form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 /*budget form page*/
 /******* end budget details page *******/
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #021422;
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    border-color: #182d45;
+    background-color: #0e233a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  tr:nth-child(odd) button{
+    background-color: #02142200;
+  }
+  tr:nth-child(odd) button:hover{
+    background-color: #02142200;
+    border: none;
+  }
+  .del-exp-btn{
+    background-color: none !important;
+    border: none;
+  }
+  .del-exp-btn:hover{
+    background-color: none !important;
+    border: none;
   }
 }
