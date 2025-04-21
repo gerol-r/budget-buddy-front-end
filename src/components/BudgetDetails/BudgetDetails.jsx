@@ -36,7 +36,8 @@ const BudgetDetails = (props) => {
       budgetId,
       expenseFormData
     );
-    setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });
+    const updatedBudget = await budgetService.show(budgetId);
+    setBudget({ ...updatedBudget });
     toast.success("Expense Added!")
   };
 
