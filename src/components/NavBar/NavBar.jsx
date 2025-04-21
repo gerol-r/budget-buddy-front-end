@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 import BudgetBuddyLogo from "../../Images/Budget-Buddy-Logo.png";
+import { toast } from "react-toastify"
 
 const NavBar = () => {
   const { user } = useContext(UserContext);

@@ -1,3 +1,7 @@
+* {
+  font-family: 'Oxanium', sans-serif;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -47,6 +51,7 @@ button {
   background-color: #0e233a;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: white;
 }
 button:hover {
   border: 3px solid;
@@ -165,11 +170,19 @@ tr:nth-child(odd) button:hover {
   background-color: #0e233a;
   border: solid 2px #182d45;
   border-radius: 2px;
+  color: white; 
+}
+#b-form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 /*budget form page*/
 /******* end budget details page *******/
 
 @media (prefers-color-scheme: dark) {
+.welcome-image {
+  width: 50%;
+  height: auto;
+}
   :root {
     color: rgba(255, 255, 255, 0.87);
     background-color: #021422;
@@ -199,5 +212,3 @@ tr:nth-child(odd) button:hover {
   .del-exp-btn:hover {
     background-color: none !important;
     border: none;
-  }
-}
