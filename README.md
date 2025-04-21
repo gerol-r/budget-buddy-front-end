@@ -5,7 +5,9 @@
 
 
 ## Description
-Budget Buddy is a group project completed by 3 developers; Zebastian, Gerol, and Nataliia. This project proved to be huge challenge for all of us. As learning developers this project served as a great experience for collaborating with other devs, and the challenges that may come with. In the end developing Budget Buddy proved invaluable in teaching the importance of clear communication, teamwork, and ability to adapt on the fly. Our group brainstormed many ideas in the planning phase, however a budget app really seemed to speak to all 3 of us. For this group, Budget Buddy was our first full stack React Application and I think we can all say that we surprised ourselves with our ability to complete this one as a team. 
+Budget Buddy was a collaborative group project developed by three aspiring developers: Zebastian, Gerol, and Nataliia. This project pushed us outside of our comfort zones and presented a number of challenges that ultimately helped us grow as developers. As one of our first real experiences working as a team, it taught us valuable lessons in communication, collaboration, and adaptability.
+
+During the planning phase, we explored several ideas, but a budgeting app resonated with all of us. It felt practical, relevant, and meaningful. Budget Buddy became our first full-stack application built with React, and despite the hurdles, we were proud to see it through. In the end, not only did we gain hands-on experience, but we also walked away with a deeper understanding of what it takes to work effectively as a development team. 
 
 ## Table of Contents
 * [Technologies Used](#technologiesused)
@@ -54,7 +56,11 @@ Budget Buddy is a group project completed by 3 developers; Zebastian, Gerol, and
 * https://trello.com/b/PTVVOlD9/project-3-budget-buddy-react-app
 
 ## <a name="design"></a>Design
-* For the design of the application we took a look at various different budgeting applications and drew inspiration from many different areas. We decided for our design to implement a dashboard of sorts for the users to see their budgets with the ability to view a different page for more information. Within this show page the user can see a chart of the budget as well as a table of their expenses which is also where they can add and delete expenses. In terms of styling Gerol created an amazing "Buddy" for our budget buddy app which we planned to implement throughout the application. For future plans we hope to implement this buddy even more into the app. Ideas for this include having the buddy offer help with budgeting tips or having the buddy pop up when an action such as changing a budget is completed (kind of like an alert).
+* For the design of Budget Buddy, we drew inspiration from a variety of budgeting applications, combining elements we liked to create something both user-friendly and visually engaging. We decided on a dashboard-style layout to give users a clear overview of their budgets, with the option to navigate to a detailed view for more in-depth information.
+
+On the budget "show" page, users can view a visual chart of their budget alongside a table of expenses. This section also allows them to easily add or delete expenses, making the app both informative and interactive.
+
+A fun and unique touch to our app was the introduction of the “Buddy” character—designed by Gerol—who we envisioned as a friendly guide for users. While the Buddy is currently integrated into the visual theme, we have future plans to expand its role. Some ideas include having the Buddy offer budgeting tips, provide helpful feedback, or even pop up as a playful alert when actions like updating a budget are completed.
 
 
 ## <a name="nextsteps"></a>Project Next Steps
@@ -81,7 +87,13 @@ Budget Buddy is a group project completed by 3 developers; Zebastian, Gerol, and
 * Gerol- Lead Front-end [GitHub](https://github.com/gerol-r)
 * Nataliia- Lead Back-end [GitHub](https://github.com/nhalko09)
 
-We are all developers looking to improve our abilities within the development world! This project was a great learning experience for all of us. Working as a group on different time zones and on different schedules, it was a challenge we had to learn to adapt to and deal with. Previously our projects were all solo, so this time around being able to communicate clearly when we were not all available made a huge difference for our group and the time we were commiting to this project. I think I can speak for all of us in saying this was quite a different challenge, but one that we all rose to the occasion and overcame it together. Completing this project only makes us more excited to continue to dive into the world of tech! Working in a small dev team and being able to accomplish an application like this only makes us dream of what else we can achieve throughout our coding careers!
+We’re a team of passionate developers, all focused on growing our skills and making our mark in the tech world. Budget Buddy was a major milestone for us—not only as our first full-stack group project, but also as a valuable lesson in teamwork, time management, and adaptability.
+
+With each of us working across different time zones and juggling varied schedules, communication quickly became the backbone of our collaboration. Up until this point, our projects had all been solo efforts, so learning how to coordinate, share responsibilities, and stay aligned despite not always being online together was a new and rewarding challenge.
+
+We can confidently say that we rose to the occasion. This experience strengthened our confidence in working as a team, and reminded us of just how much can be achieved when collaboration and commitment come together. Completing this project has only fueled our excitement to keep learning, keep building, and keep pushing forward in our tech journeys. If this is what we can create now, we can't wait to see what the future holds.
+
+
 
     
 ## Works Cited:
