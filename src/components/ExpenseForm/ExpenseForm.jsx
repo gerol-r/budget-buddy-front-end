@@ -14,11 +14,11 @@ const ExpenseForm = (props) => {
 		});
 	};
 
-	const handleSubmit = (evt) => {
-		// evt.preventDefault();
-		props.handleAddExpense(formData);
-		setFormData({ name: "", amount: "" });
-	};
+
+  const handleSubmit = (evt) => {
+    props.handleAddExpense(formData);
+    setFormData({ name: '', amount: 0});
+  };
 
 	return (
 		<form className="expense-form" onSubmit={handleSubmit}>

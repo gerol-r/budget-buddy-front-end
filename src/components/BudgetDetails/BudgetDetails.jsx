@@ -34,9 +34,7 @@ const BudgetDetails = (props) => {
       budgetId,
       expenseFormData
     );
-    setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });
-  };
-
+    setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });};
 
   const handleDeleteExpense = async (expenseId) => {
     const deletedExpense = await budgetService.deleteExpense(budgetId, expenseId);
@@ -55,7 +53,6 @@ const BudgetDetails = (props) => {
         <h2>{budget.name} Budget</h2>
         <div style={{ display: "flex", justifyContent: "space-between"}}>
           <div style={{ width: "300px", height: "300px"}}>
-            {/* Use the new component */}
             <BudgetDonutChart
               budgetAmount={budget.amount}
               expenses={budget.expenses}
@@ -105,7 +102,7 @@ const BudgetDetails = (props) => {
               <tr key={expense._id}>
                 <td>{expense.name}</td>
                 <td>${expense.amount}</td>
-                <td><button onClick={() => handleDeleteExpense(expense._id)}><FaTrash /></button></td>
+                <td><button className="del-exp-btn" onClick={() => handleDeleteExpense(expense._id)}><FaTrash /></button></td>
               </tr>
             ))}
           </tbody>
