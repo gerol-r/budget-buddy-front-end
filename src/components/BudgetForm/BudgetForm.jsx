@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 
 import * as budgetService from "../../services/budgetService";
 import BudgetFormBuddy from "../../Images/budget-form-buddy.png";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BudgetForm = (props) => {
 	const [formData, setFormData] = useState({
@@ -29,10 +31,12 @@ const BudgetForm = (props) => {
 		evt.preventDefault();
 		if (budgetId) {
 			props.handleUpdateBudget(budgetId, formData);
+			toast.success("Budget updated!")
 			console.log("Submitting updated budget:", formData);
 		} else {
 			console.log(formData);
 			props.handleAddBudget(formData);
+			toast.success("Budget Added!")
 		}
 	};
 

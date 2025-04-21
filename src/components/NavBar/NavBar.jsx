@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
-import BudgetBuddyLogo from "../../Images/budget-buddy-logo.png";
+import BudgetBuddyLogo from "../../Images/Budget-Buddy-Logo.png";
 
 const NavBar = () => {
 	const { user } = useContext(UserContext);

@@ -7,6 +7,8 @@ import BudgetDonutChart from "../BudgetDonutChart/BudgetDonutChart";
 import { _alignPixel } from "chart.js/helpers";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BudgetDetails = (props) => {
   console.log(props);
@@ -34,7 +36,9 @@ const BudgetDetails = (props) => {
       budgetId,
       expenseFormData
     );
-    setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });};
+    setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });
+    toast.success("Expense Added!")
+  };
 
   const handleDeleteExpense = async (expenseId) => {
     const deletedExpense = await budgetService.deleteExpense(budgetId, expenseId);
@@ -42,6 +46,7 @@ const BudgetDetails = (props) => {
       ...budget,
       expenses: budget.expenses.filter((expense) => expense._id !== deletedExpense.expenseId),
     });
+    toast.info("Expense Deleted");
     navigate(`/budgets/${budgetId}`);
   };
 
