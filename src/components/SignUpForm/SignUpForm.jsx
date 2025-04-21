@@ -64,8 +64,8 @@ const SignUpForm = () => {
 					}}
 				>
 					{/* Form content */}
-            <p>Sign Up For Budget Buddy</p>
 					<form className="budget-form" onSubmit={handleSubmit}>
+            <p>Sign Up For Budget Buddy</p>
 						<div id="b-form-group">
 							<label htmlFor="username">Username:</label>
 							<input
