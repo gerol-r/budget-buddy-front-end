@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { signUp } from "../../services/authService.js";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import BudgetFormBuddy from "../../Images/budget-form-buddy.png";
+import { toast } from 'react-toastify';
 
 const SignUpForm = () => {
 	const navigate = useNavigate();
@@ -29,6 +30,7 @@ const SignUpForm = () => {
 			const newUser = await signUp(formData);
 			console.log(newUser);
 			setUser(newUser);
+      toast.success("Sign Up Successful!")
 			navigate("/");
 		} catch (err) {
 			setMessage(err.message);
