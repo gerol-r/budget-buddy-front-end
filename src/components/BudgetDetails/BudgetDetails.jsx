@@ -17,6 +17,7 @@ const BudgetDetails = (props) => {
 
   const [budget, setBudget] = useState(null);
 
+
   // useEffect
   useEffect(() => {
     const fetchBudget = async () => {
@@ -34,12 +35,6 @@ const BudgetDetails = (props) => {
       expenseFormData
     );
     setBudget({ ...budget, expenses: [...budget.expenses, newExpense] });};
-
-  const handleUpdateExpense = async (expenseId, expenseFormData) => {
-    const updatedExpense = await budgetService.updateExpense(expenseId, expenseFormData)
-    setBudget(budget.map((expense) => (expenseId === expense._id ? updatedExpense : expense)))
-    navigate(`/budgets/${budgetId}`);
-  };
 
   const handleDeleteExpense = async (expenseId) => {
     const deletedExpense = await budgetService.deleteExpense(budgetId, expenseId);
@@ -93,7 +88,7 @@ const BudgetDetails = (props) => {
 
         <table className="expense-table">
           <tr>
-            <th colSpan={4} id="theader">
+            <th colSpan={3} id="theader">
               Expenses
             </th>
           </tr>

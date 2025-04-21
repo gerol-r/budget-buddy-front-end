@@ -4,13 +4,13 @@ import { UserContext } from "../../contexts/UserContext";
 import BudgetBuddyLogo from "../../Images/budget-buddy-logo.png";
 
 const NavBar = () => {
-  const { user } = useContext(UserContext);
-  // console.log(user)
-  const handleSignOut = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setUser(null);
-  };
+	const { user } = useContext(UserContext);
+	// console.log(user)
+	const handleSignOut = () => {
+		localStorage.removeItem("token");
+		localStorage.removeItem("user");
+		setUser(null);
+	};
 
   return (
     <nav>
@@ -90,5 +90,6 @@ const NavBar = () => {
       )}
     </nav>
   );
+
 };
 export default NavBar;
